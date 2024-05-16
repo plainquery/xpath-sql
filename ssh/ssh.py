@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
-
+# python ssh.py 1
 import os
 from paramiko import SSHClient, RSAKey
 from dotenv import load_dotenv
 import sys
 
+filename = sys.argv[1]
+
 # Sprawdzenie, czy podano odpowiednią liczbę argumentów
 if len(sys.argv) != 2:
-    print("Użycie: python skrypt.py nazwa_folderu")
+    print(f"Użycie: python ${filename} nazwa_folderu")
     sys.exit(1)
 
 # Nazwa folderu z argumentu
