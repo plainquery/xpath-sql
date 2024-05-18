@@ -1,0 +1,25 @@
+textCommand:
+  command: "Create Web Raport with title, description and prepare a photo"
+
+environmentVariables:
+  webURL: URL
+  hostname: HOSTNAME
+
+scriptArguments:
+  csvFilename: CSV_FILE
+
+xpathMappings:
+  title: "//div[@id='tytul']/text()"
+  content: "//div[@id='zawartosc']/text()"
+
+csvMapping:
+  URL: "adres_www"
+
+urlToImage:
+  url: $URL
+  mimetype: image/jpg
+
+sqlQueries:
+  insertPageData: "INSERT INTO Strony (URL, Hostname, Tytul, Zawartosc) VALUES ($webURL, $hostname, $title, $content)"
+  updatePageData: "UPDATE Strony SET Tytul = $title, Zawartosc = $content WHERE URL = $webURL"
+  deletePageData: "DELETE FROM Strony WHERE URL = $webURL"
